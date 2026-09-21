@@ -6,6 +6,6 @@ function small(numbers){
       smallest=numbers[i];
     }
   }
-  return smallest++;
+  return smallest;
 }
 console.log(small(numbers));
