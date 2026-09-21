@@ -1,0 +1,11 @@
+let numbers = [10, 25, 7, 40, 15, 30];
+function countGreater(numbers, value){
+  let count=0;
+  for(let i=0;i<numbers.length;i++){
+    if(numbers[i]>value){
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countGreater(numbers, 30));
