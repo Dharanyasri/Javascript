@@ -1,0 +1,16 @@
+let numbers = [12, 5, 8, 2, 20, 7];
+function secondSmallest(numbers){
+  let smallest=numbers[0];
+  let second=numbers[0];
+  for(let i=0;i<numbers.length;i++){
+    if(numbers[i]<smallest){
+      second=smallest;
+      smallest=numbers[i];
+    }
+    else if (numbers[i] < second && numbers[i] != smallest) {
+      second = numbers[i];
+    }
+  }
+  return second;
+}
+console.log(secondSmallest(numbers));
