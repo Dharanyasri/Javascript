@@ -1,0 +1,11 @@
+let numbers = [-10, 20, -5, 30, 15, -2];
+function sumPositive(numbers){
+  let pos=0;
+  for(let i=0;i<numbers.length;i++){
+    if(numbers[i]>0){
+      pos+=numbers[i];
+    }
+  }
+  return pos++;
+}
+console.log(sumPositive(numbers));
