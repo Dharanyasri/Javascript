@@ -1,0 +1,10 @@
+function checkLength(text) {
+  if (text.length > 5) {
+    return "Long";
+  }
+  else {
+    return "Short";
+  }
+}
+
+console.log(checkLength("Dha"));
