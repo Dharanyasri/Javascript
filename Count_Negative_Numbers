@@ -1,0 +1,11 @@
+let numbers = [10, -5, 8, -12, 0, -3, 20];
+function countNegative(numbers){
+  let neg=0;
+  for(let i=0;i<numbers.length;i++){
+    if(numbers[i]<0){
+      neg++;
+    }
+  }
+  return neg;
+}
+console.log(countNegative(numbers));
