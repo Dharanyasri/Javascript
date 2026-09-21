@@ -1,0 +1,7 @@
+let text = "Javascript";
+
+function countCharacters(text) {
+  return text.length;
+}
+
+console.log(countCharacters(text));
