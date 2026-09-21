@@ -1,0 +1,15 @@
+let numbers = [10, 15, 22, 6, 30, 40];
+
+function countEven(numbers) {
+  let even = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 == 0) {
+      even++;
+    }
+  }
+
+  return even;
+}
+
+console.log(countEven(numbers));
