@@ -1,0 +1,12 @@
+let numbers = [10, 25, 7, 40, 15];
+function containsNumber(numbers, target){
+  //let check=0;
+  for(let i=0;i<numbers.length;i++){
+    if(numbers[i]==target){
+      return "Found";
+    }
+  }
+    return "Not Found";
+  
+}
+console.log(containsNumber(numbers, 25));
