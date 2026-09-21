@@ -1,0 +1,13 @@
+function findLargest(a, b) {
+  if (a > b) {
+    return "A is greater";
+  }
+  else if (b > a) {
+    return "B is greater";
+  }
+  else {
+    return "Both are equal";
+  }
+}
+
+console.log(findLargest(20, 20));
