@@ -1,0 +1,15 @@
+/*
+ * Return the largest number in the array.
+ */
+const numbers = [12, 45, 7, 89, 23];
+
+// Expected Output: 89
+
+
+let result =[];
+for(let i=0;i<numbers.length;i++){
+  if(numbers[i]>result){
+    result=numbers[i];
+  }
+}
+console.log(result);
