@@ -1,0 +1,15 @@
+/*
+ * Return the smallest number in the array.
+ */
+const numbers = [35, 12, 48, 5, 27];
+
+// Expected Output: 5
+
+
+let result=0;
+for(let i=0;i<numbers.length;i++){
+  if(result<numbers[i]){
+    result++;
+  }
+}
+console.log(result);
