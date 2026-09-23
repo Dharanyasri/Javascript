@@ -1,0 +1,11 @@
+/*
+ * Return the sum of all numbers.
+ */
+const numbers = [5, 10, 15, 20];
+
+// Expected Output: 50
+let result =0;
+for(let i=0;i<numbers.length;i++){
+  result+=numbers[i];
+}
+console.log(result);
