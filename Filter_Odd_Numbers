@@ -1,0 +1,14 @@
+/*
+ * Return a new array containing only the odd numbers.
+ */
+const numbers = [4, 7, 10, 13, 18, 21];
+
+// Expected Output: [7, 13, 21]
+
+const result=[];
+for(let i=0;i<numbers.length;i++){
+  if(numbers[i]%2!=0){
+    result[result.length]=numbers[i];
+  }
+}
+console.log(result);
