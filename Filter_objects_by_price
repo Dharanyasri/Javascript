@@ -1,0 +1,41 @@
+/*
+ * Return a new array containing only products
+ * whose price is greater than 1000.
+ */
+const products = [
+  { name: "Mouse", price: 500 },
+  { name: "Keyboard", price: 1200 },
+  { name: "Monitor", price: 8000 },
+  { name: "Pen", price: 50 }
+];
+
+// Expected Output:
+// [
+//   { name: "Keyboard", price: 1200 },
+//   { name: "Monitor", price: 8000 }
+// ]
+
+//Method 1
+const result=[];
+for(let i=0;i<products.length;i++){
+  if(products[i].price>1000){
+    result[result.length]=products[i];
+  }
+}
+console.log(result);
+
+//Method 2
+let result=[];
+let i=0;
+while(i<products.length){
+  if(products[i].price>1000){
+    result[result.length]=products[i];
+  }
+  i++;
+}
+console.log(result);
+
+
+//Method 3
+const result = products.filter(products=>products.price>1000);
+console.log(result);
