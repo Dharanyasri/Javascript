@@ -1,0 +1,30 @@
+/*
+ * Return only the names whose length is 5 or less.
+ */
+const names = ["Arun", "Priya", "Karthik", "Meena", "Raj"];
+
+// Expected Output: ["Arun", "Priya", "Meena", "Raj"]
+
+//Method 1
+const result=[];
+for(let i=0;i<names.length;i++){
+  if(names[i].length<=5){
+    result[result.length]=names[i];
+  }
+}
+console.log(result);
+
+//Method 2
+const result=[];
+let i=0;
+while(i<names.length){
+  if(names[i].length<=5){
+    result[result.length]=names[i];
+  }
+  i++;
+}
+console.log(result);
+
+//Method 3
+let result=names.filter(names=>names.length<=5);
+console.log(result);
