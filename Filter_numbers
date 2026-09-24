@@ -1,0 +1,29 @@
+/*
+ * Return a new array containing only numbers greater than 10.
+ */
+const numbers = [5, 12, 8, 20, 15, 3];
+
+// Expected Output: [12, 20, 15]
+//Method 1
+const result=[]
+for(let i=0;i<numbers.length;i++){
+  if(numbers[i]>10){
+    result[result.length]=numbers[i];
+  }
+}
+console.log(result);
+
+//Method 2
+const result=[];
+let i=0;
+while(i<numbers.length){
+  if(numbers[i]>10){
+    result[result.length]=numbers[i];
+  }
+  i++;
+}
+console.log(result);
+
+//Method 3
+const result=numbers.filter(numbers=>numbers>10);
+console.log(result);
