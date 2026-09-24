@@ -1,0 +1,36 @@
+/*
+ * Find the object whose name is "Laptop".
+ */
+const products = [
+  { id: 1, name: "Mouse", price: 500 },
+  { id: 2, name: "Laptop", price: 55000 },
+  { id: 3, name: "Keyboard", price: 1200 },
+  { id: 4, name: "Monitor", price: 8000 }
+];
+
+// Expected Output:
+{ id: 2, name: "Laptop", price: 55000 }
+
+//Method 1
+const result=[];
+for(let i=0;i<products.length;i++){
+  if(products[i].name=="Laptop"){
+    result[result.length]=products[i];
+  }
+}
+console.log(result);
+
+//Method 2
+const result=[];
+let i=0;
+while(i<products.length){
+  if(products[i].name=="Laptop"){
+    result[result.length]=products[i];
+  }
+  i++;
+}
+console.log(result);
+
+//Method 3
+const result=products.find(products=>products.name=="Laptop");
+console.log(result);
