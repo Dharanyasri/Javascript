@@ -1,0 +1,32 @@
+/*
+ * Return a new array containing only the ages.
+ */
+const users = [
+  { name: "Arun", age: 21 },
+  { name: "Priya", age: 23 },
+  { name: "Karthik", age: 20 },
+  { name: "Meena", age: 22 }
+];
+
+// Expected Output: [21, 23, 20, 22]
+
+//Method 1
+const result=[];
+for(let i=0;i<users.length;i++){
+  result[result.length]=users[i].age;
+}
+console.log(result);
+
+//Method 2
+
+const result=[];
+let i=0;
+while(i<users.length){
+  result[result.length]=users[i].age;
+  i++;
+}
+console.log(result);
+
+//Method 3
+const result=users.map(users=>users.age);
+console.log(result);
