@@ -1,0 +1,17 @@
+/*
+ * Create a new array where each number is increased by 10.
+ */
+const numbers = [5, 12, 20, 7, 30];
+
+// Expected Output: [15, 22, 30, 17, 40]
+
+//Method 1
+const result=[];
+for(let i=0;i<numbers.length;i++){
+  result[result.length]=numbers[i]+10;
+}
+console.log(result);
+
+//Method 2
+const result=numbers.map(numbers=>numbers+10);
+console.log(result);
