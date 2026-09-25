@@ -1,0 +1,22 @@
+/*
+ * Find the Smallest Number in an Array
+ *
+ * Return the smallest number from the given array.
+ */
+
+const numbers = [45, 12, 78, 3, 56, 9];
+
+// Expected Output: 3
+//Method 1
+let result=numbers[0];
+for(let i=0;i<numbers.length;i++){
+  if(numbers[i]<result){
+    result=numbers[i];
+  }
+}
+console.log(result);
+
+//Method 2
+const result2 = Math.min(...numbers);
+
+console.log(result2);
