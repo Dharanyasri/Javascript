@@ -1,0 +1,22 @@
+/*
+ * Find Numbers Divisible by 3
+ *
+ * Return a new array containing only numbers
+ * that are divisible by 3.
+ */
+
+const numbers = [4, 9, 12, 17, 21, 25, 30];
+
+// Expected Output: [9, 12, 21, 30]
+//Method 1
+const result=[];
+for(let i=0;i<numbers.length;i++){
+  if(numbers[i]%3==0){
+    result[result.length]=numbers[i];
+  }
+}
+console.log(result);
+
+//Method 2
+const result=numbers.filter(n =>n % 3 == 0)
+console.log(result);
