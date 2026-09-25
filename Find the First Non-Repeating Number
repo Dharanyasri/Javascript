@@ -1,0 +1,25 @@
+/*
+ * Find the First Non-Repeating Number
+ *
+ * Return the first number that appears only once
+ * in the given array.
+ */
+
+const numbers = [4, 5, 4, 6, 5, 7, 6, 8];
+
+// Expected Output: 7
+
+let result;
+for(let i=0;i<numbers.length;i++){
+  let count=0;
+  for(let j=0;j<numbers.length;j++){
+    if(numbers[i]==numbers[j]){
+      count++;
+    }
+  }
+  if(count==1){
+    result=numbers[i];
+    break;
+  }
+}
+console.log(result);
