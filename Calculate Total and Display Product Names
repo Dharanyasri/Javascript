@@ -1,0 +1,30 @@
+/*
+ * Calculate Total and Display Product Names
+ *
+ * Use forEach() to:
+ * 1. Print the name of each product.
+ * 2. Calculate the total price of all products.
+ *
+ * Do not use reduce() or map().
+ */
+
+const products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Mouse", price: 800 },
+  { name: "Keyboard", price: 1500 },
+  { name: "Headphones", price: 2000 }
+];
+
+// Expected Output:
+// Laptop
+// Mouse
+// Keyboard
+// Headphones
+// Total Price: 54300
+
+let total=0;
+products.forEach(function(products){
+  console.log(products.name);
+  total+=products.price;
+});
+console.log(total);
