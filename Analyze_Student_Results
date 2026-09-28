@@ -1,0 +1,41 @@
+/*
+ * Analyze Student Results
+ *
+ * 1. Get students who scored 60 or more.
+ * 2. Find the first student who scored exactly 90.
+ * 3. Create a new array containing only their names.
+ * 4. Check whether at least one student scored below 40.
+ */
+
+const students = [
+  { name: "Asha", marks: 35 },
+  { name: "Rohan", marks: 72 },
+  { name: "Meena", marks: 90 },
+  { name: "Karan", marks: 55 },
+  { name: "Ananya", marks: 68 },
+  { name: "Vikram", marks: 42 }
+];
+
+// Expected Output 1:
+// [
+//   { name: "Rohan", marks: 72 },
+//   { name: "Meena", marks: 90 },
+//   { name: "Ananya", marks: 68 }
+// ]
+
+// Expected Output 2:
+// { name: "Meena", marks: 90 }
+
+// Expected Output 3:
+// ["Asha", "Rohan", "Meena", "Karan", "Ananya", "Vikram"]
+
+// Expected Output 4:
+// true
+const result1=students.filter(std=>std.marks>=60);
+console.log(result1);
+const result2=students.find(std=>std.marks==90);
+console.log(result2);
+const result3=students.map(std=>std.name);
+console.log(result3);
+const result4=students.some(std=>std.marks<40);
+console.log(result4);
