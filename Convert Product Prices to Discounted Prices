@@ -1,0 +1,23 @@
+/*
+ * Convert Product Prices to Discounted Prices
+ *
+ * Apply a 10% discount to every product price
+ * and return a new array containing the discounted prices.
+ *
+ * Use map().
+ */
+
+const products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Mouse", price: 800 },
+  { name: "Keyboard", price: 1500 },
+  { name: "Headphones", price: 2000 }
+];
+
+// Expected Output:
+// [45000, 720, 1350, 1800]
+
+const result=products.map(function(products){
+  return products.price-(products.price*10/100);
+});
+console.log(result);
