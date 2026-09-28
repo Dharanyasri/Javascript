@@ -1,0 +1,49 @@
+/*
+ * Analyze Employee Salaries
+ *
+ * 1. Get all employees whose salary is greater than 40000.
+ * 2. Find the first employee whose salary is greater than 60000.
+ * 3. Create a new array containing only the employee names.
+ */
+
+const employees = [
+  { name: "Asha", salary: 35000 },
+  { name: "Rohan", salary: 55000 },
+  { name: "Meena", salary: 70000 },
+  { name: "Karan", salary: 30000 },
+  { name: "Ananya", salary: 65000 }
+];
+
+// Expected Output 1:
+// [
+//   { name: "Rohan", salary: 55000 },
+//   { name: "Meena", salary: 70000 },
+//   { name: "Ananya", salary: 65000 }
+// ]
+
+// Expected Output 2:
+// { name: "Meena", salary: 70000 }
+
+// Expected Output 3:
+// ["Asha", "Rohan", "Meena", "Karan", "Ananya"]
+let result1=[];
+let result2=[];
+let result3=[];
+for(let i=0;i<employees.length;i++){
+  if(employees[i].salary>40000){
+    result1[result1.length]=employees[i];
+  }
+}
+for(let i=0;i<employees.length;i++){
+  if(employees[i].salary>60000){
+    result2=employees[i];
+    break;
+  }
+}
+for(let i=0;i<employees.length;i++){
+  result3[result3.length]=employees[i].name;
+}
+
+console.log(result1);
+console.log(result2);
+console.log(result3);
