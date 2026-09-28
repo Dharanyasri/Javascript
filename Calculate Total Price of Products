@@ -1,0 +1,22 @@
+/*
+ * Calculate Total Price of Products
+ *
+ * Iterate through the products using forEach()
+ * and calculate the total price.
+ *
+ * Do not use reduce().
+ */
+
+const products = [
+  { name: "Pen", price: 10 },
+  { name: "Book", price: 50 },
+  { name: "Bag", price: 800 },
+  { name: "Bottle", price: 200 }
+];
+
+// Expected Output: 1060
+total=0;
+products.forEach(function(products){
+   total+=products.price;
+});
+console.log(total);
