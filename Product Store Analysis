@@ -1,0 +1,29 @@
+/*
+ * Product Store Analysis
+ *
+ * 1. Get all products whose stock is less than 10.
+ *
+ * 2. Find the first product whose price is greater than 5,000.
+ *
+ * 3. Create a new array containing the product names in uppercase.
+ *
+ * 4. Calculate the total value of all products in stock.
+ *    Formula: price × stock
+ */
+
+const products = [
+    { name: "Laptop", price: 55000, stock: 8, category: "Electronics" },
+    { name: "Mouse", price: 800, stock: 25, category: "Electronics" },
+    { name: "Keyboard", price: 1500, stock: 12, category: "Electronics" },
+    { name: "Chair", price: 4500, stock: 5, category: "Furniture" },
+    { name: "Table", price: 8000, stock: 0, category: "Furniture" }
+];
+
+const res1=products.filter(prd=>prd.stock<10);
+console.log(res1);
+const res2=products.find(prd=>prd.price>5000);
+console.log(res2);
+const res3=products.map(prd=>prd.name.toUpperCase());
+console.log(res3);
+const res4=products.reduce((total,prd)=>total+(prd.price*prd.stock),0);
+console.log(res4);
