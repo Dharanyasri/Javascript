@@ -1,0 +1,53 @@
+/*
+ * Employee Skill Analysis
+ *
+ * 1. Find all employees from the "Engineering" department.
+ *
+ * 2. Find all employees who know "React".
+ *
+ * 3. Find all employees who know both "React" and "Node.js".
+ *
+ * 4. Find all employees who know "JavaScript" but do NOT know "Node.js".
+ *
+ * 5. Create a new array containing the names of employees
+ *    who know "Node.js".
+ */
+
+const employees = [
+    {
+        name: "Anu",
+        department: "Engineering",
+        skills: ["JavaScript", "React", "Node.js"]
+    },
+    {
+        name: "Bala",
+        department: "Engineering",
+        skills: ["JavaScript", "Python", "Node.js"]
+    },
+    {
+        name: "Divya",
+        department: "QA",
+        skills: ["JavaScript", "Cypress", "Playwright"]
+    },
+    {
+        name: "Karthik",
+        department: "Engineering",
+        skills: ["React", "TypeScript", "Node.js"]
+    },
+    {
+        name: "Priya",
+        department: "QA",
+        skills: ["JavaScript", "React", "Cypress"]
+    }
+];
+
+const res1=employees.filter(emp=>emp.department=="Engineering");
+console.log(res1);
+const res2=employees.filter(emp=>emp.skills.includes("React"));
+console.log(res2);
+const res3=employees.filter(emp=>emp.skills.includes("React")&&emp.skills.includes("Node.js"));
+console.log(res3);
+const res4=employees.filter(emp=>emp.skills.includes("JavaScript")&&!emp.skills.includes("Node.js"));
+console.log(res4);
+const res5=employees.filter(emp=>emp.skills.includes("Node.js")).map(emp=>emp.name);
+console.log(res5);
