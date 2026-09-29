@@ -1,0 +1,33 @@
+/*
+ * Student Performance Analysis
+ *
+ * 1. Get all students who scored 70 or more marks.
+ *
+ * 2. Find the first student who scored more than 85 marks.
+ *
+ * 3. Create a new array containing only the student names.
+ *
+ * 4. Calculate the total marks of all students.
+ *
+ * 5. Check whether at least one student scored below 40.
+ */
+
+const students = [
+    { name: "Asha", marks: 65 },
+    { name: "Rohan", marks: 88 },
+    { name: "Meena", marks: 92 },
+    { name: "Karan", marks: 35 },
+    { name: "Ananya", marks: 76 },
+    { name: "Vikram", marks: 48 }
+];
+
+const res1=students.filter(std=>std.marks>=70);
+console.log(res1);
+const res2=students.find(std=>std.marks>85);
+console.log(res2);
+const res3=students.map(std=>std.name);
+console.log(res3);
+const res4=students.reduce((total,std)=>total+=std.marks,0);
+console.log(res4);
+const res5=students.some(std=>std.marks<40);
+console.log(res5);
