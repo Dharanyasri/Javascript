@@ -1,0 +1,32 @@
+/*
+ * Order Analysis
+ *
+ * 1. Get all orders whose total amount is greater than 1000.
+ *
+ * 2. Find the first order whose status is "Pending".
+ *
+ * 3. Create a new array containing only the customer names.
+ *
+ * 4. Calculate the total amount of all orders.
+ *
+ * 5. Check whether every order has an amount greater than 0.
+ */
+
+const orders = [
+    { customer: "Asha", amount: 1200, status: "Delivered" },
+    { customer: "Rohan", amount: 800, status: "Pending" },
+    { customer: "Meena", amount: 2500, status: "Delivered" },
+    { customer: "Karan", amount: 450, status: "Cancelled" },
+    { customer: "Ananya", amount: 1800, status: "Pending" }
+];
+
+const res1=orders.filter(ord=>ord.amount>1000);
+console.log(res1);
+const res2=orders.find(ord=>ord.status="Pending");
+console.log(res2);
+const res3=orders.map(ord=>ord.customer);
+console.log(res3);
+const res4=orders.reduce((total,ord)=>total+=ord.amount,0);
+console.log(res4);
+const res5=orders.every(ord=>ord.amount>0);
+console.log(res5);
