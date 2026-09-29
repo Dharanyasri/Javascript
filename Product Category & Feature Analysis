@@ -1,0 +1,54 @@
+/*
+ * Product Category & Feature Analysis
+ *
+ * 1. Find all products from the "Electronics" category.
+ *
+ * 2. Find all products that have the feature "Bluetooth".
+ *
+ * 3. Find all products that have BOTH "Bluetooth" and "Wireless".
+ *
+ * 4. Find all products that have "USB-C"
+ *    but do NOT have "Bluetooth".
+ *
+ * 5. Create a new array containing only the names
+ *    of products that have "Bluetooth".
+ */
+
+const products = [
+    {
+        name: "Wireless Mouse",
+        category: "Electronics",
+        features: ["Bluetooth", "Wireless", "USB-C"]
+    },
+    {
+        name: "Keyboard",
+        category: "Electronics",
+        features: ["Wireless", "USB-C"]
+    },
+    {
+        name: "Headphones",
+        category: "Electronics",
+        features: ["Bluetooth", "Wireless"]
+    },
+    {
+        name: "Desk Lamp",
+        category: "Home",
+        features: ["USB-C", "LED"]
+    },
+    {
+        name: "Smart Speaker",
+        category: "Electronics",
+        features: ["Bluetooth", "WiFi", "Wireless"]
+    }
+];
+
+const res1=products.filter(prd=>prd.category=="Electronics");
+console.log(res1);
+const res2=products.filter(prd=>prd.features.includes("Bluetooth"));
+console.log(res2);
+const res3=products.filter(prd=>prd.features.includes("Bluetooth")&&prd.features.includes("Wireless"));
+console.log(res3);
+const res4=products.filter(prd=>prd.features.includes("USB-C")&&!prd.features.includes("Bluetooth"));
+console.log(res4);
+const res5=products.filter(prd=>prd.features.includes("Bluetooth")).map(prd=>prd.name);
+console.log(res5);
