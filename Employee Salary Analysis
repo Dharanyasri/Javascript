@@ -1,0 +1,20 @@
+const emp = [
+    { name: "Asha", salary: 35000, experience: 2 },
+    { name: "Rohan", salary: 55000, experience: 4 },
+    { name: "Meena", salary: 75000, experience: 6 },
+    { name: "Karan", salary: 42000, experience: 3 },
+    { name: "Ananya", salary: 68000, experience: 5 }
+];
+//Get all employees whose salary is greater than 50,000.
+//Find the first employee whose experience is more than 4 years.
+//Create a new array containing only the employee names.
+//Calculate the total salary of all employees.
+
+const res1=emp.filter(e=>e.salary>50000);
+console.log(res1);
+const res2=emp.find(e=>e.experience>4);
+console.log(res2);
+const res3=emp.map(e=>e.name);
+console.log(res3);
+const res4=emp.reduce((total,e)=>total+=e.salary,0);
+console.log(res4);
