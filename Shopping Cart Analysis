@@ -1,0 +1,65 @@
+/*
+ * Shopping Cart Analysis
+ *
+ * - [ ] 1. Get only the products whose quantity is greater than 0.
+ *
+ * - [ ] 2. Calculate the total price for each product.
+ *       total = price × quantity
+ *
+ * - [ ] 3. Keep only:
+ *       name, category, total
+ *
+ * - [ ] 4. Sort the products by total price
+ *       from highest to lowest.
+ *
+ * - [ ] 5. Calculate the total cart value.
+ *
+ * - [ ] 6. Find the product with the highest total price.
+ *
+ * - [ ] 7. Check whether the cart contains
+ *       any Electronics product.
+ *
+ * - [ ] 8. Generate the final result:
+ *
+ * {
+ *     products: [
+ *         { name: "...", category: "...", total: ... },
+ *         ...
+ *     ],
+ *     cartTotal: ...,
+ *     highestProduct: "...",
+ *     hasElectronics: true/false
+ * }
+ */
+
+const cart = [
+    { name: "Laptop", category: "Electronics", price: 50000, quantity: 1 },
+    { name: "Mouse", category: "Electronics", price: 1000, quantity: 2 },
+    { name: "Chair", category: "Furniture", price: 5000, quantity: 0 },
+    { name: "Keyboard", category: "Electronics", price: 3000, quantity: 2 },
+    { name: "Notebook", category: "Stationery", price: 100, quantity: 5 }
+];
+
+const qty = cart.filter(ct=>ct.quantity>0);
+const total = qty.map(q=>{
+    const incs = q.price*q.quantity;
+    return {
+        name : q.name,
+        category : q.category,
+        total : incs
+    }
+})
+const sorting = total.sort((g,h)=>h.total-g.total);
+const value = total.reduce((acc,sum)=>acc+sum.total,0)
+const increase = total.reduce((highest,sum)=>{
+    return (highest.total>sum.total) ? highest : sum;
+}).name
+const find = total.some(tot=>tot.category=="Electronics");
+const result = {
+    products : total,
+    cartTotal : value,
+    highestProduct: increase,
+     hasElectronics : find
+    
+}
+console.log(result);
