@@ -1,0 +1,59 @@
+/*
+Problem 1 — Product Review Analysis
+
+Calculate the average rating of every product.
+
+Then:
+1. Keep only products with average rating >= 4.
+2. Sort them by average rating in descending order.
+3. Return only the product name and average rating.
+*/
+
+const products = [
+    {
+        name: "Laptop",
+        category: "Electronics",
+        reviews: [5, 4, 5, 3]
+    },
+    {
+        name: "Mouse",
+        category: "Electronics",
+        reviews: [4, 4, 3]
+    },
+    {
+        name: "Chair",
+        category: "Furniture",
+        reviews: [5, 5, 4]
+    },
+    {
+        name: "Keyboard",
+        category: "Electronics",
+        reviews: [2, 3, 3]
+    }
+];
+
+/*
+Expected Output:
+
+[
+    { name: "Chair", average: 4.67 },
+    { name: "Laptop", average: 4.25 }
+]
+*/
+
+const avg = products.map(prd=>{
+    const total = prd.reviews.reduce((acc,sum)=>acc+sum,0);
+    const average = total/prd.reviews.length;
+
+    return {
+        name : prd.name,
+        average : average
+    }
+},{})
+const filt=avg.filter(a=>a.average>=4);
+filt.sort((a,b)=>b.average-a.average);
+const result = filt.map(f=>({
+        name : f.name,
+        average : f.average
+}));
+console.log(result);
