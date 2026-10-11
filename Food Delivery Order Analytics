@@ -1,0 +1,114 @@
+const orders = [
+    {
+        id: 101,
+        customer: "Anu",
+        status: "delivered",
+        items: [
+            { name: "Pizza", price: 300, quantity: 2 },
+            { name: "Juice", price: 100, quantity: 1 }
+        ],
+        deliveryFee: 40,
+        rating: 5
+    },
+    {
+        id: 102,
+        customer: "Bala",
+        status: "delivered",
+        items: [
+            { name: "Burger", price: 150, quantity: 2 },
+            { name: "Fries", price: 80, quantity: 1 }
+        ],
+        deliveryFee: 30,
+        rating: 4
+    },
+    {
+        id: 103,
+        customer: "Charan",
+        status: "cancelled",
+        items: [
+            { name: "Pizza", price: 300, quantity: 1 }
+        ],
+        deliveryFee: 40,
+        rating: 0
+    },
+    {
+        id: 104,
+        customer: "Divya",
+        status: "delivered",
+        items: [
+            { name: "Biryani", price: 250, quantity: 2 },
+            { name: "Juice", price: 100, quantity: 2 }
+        ],
+        deliveryFee: 50,
+        rating: 5
+    },
+    {
+        id: 105,
+        customer: "Ezhil",
+        status: "delivered",
+        items: [
+            { name: "Sandwich", price: 180, quantity: 1 },
+            { name: "Coffee", price: 90, quantity: 2 }
+        ],
+        deliveryFee: 25,
+        rating: 3
+    }
+];
+
+//Ignore cancelled orders.
+const a = orders.filter(ord=>ord.status=="delivered");
+
+//Calculate the food subtotal for each delivered order (price × quantity)
+const b = a.map(ord=>{
+  const subtotal = ord.items.reduce((acc,item)=>{
+    return acc+item.price*item.quantity;
+  },0);
+  return {
+    id : ord.id,
+    customer : ord.customer,
+    deliveryFee : ord.deliveryFee,
+    subtotal : subtotal
+  }
+});
+
+//Add the delivery fee to calculate each order's final bill.
+const c = b.map(ord=>{
+  const finalbill = ord.subtotal+ord.deliveryFee;
+  return {
+    id : ord.id,
+    customer : ord.customer,
+    finalBill : finalbill
+  }
+});//print 
+
+//Keep orders whose final bill is greater than ₹300.
+const d = c.filter(ord=>ord.finalBill>300);
+
+//Sort those orders by final bill from highest to lowest.
+d.sort((g,h)=>h.finalBill-g.finalBill);
+
+//Calculate total revenue from all delivered orders.
+const e = c.reduce((acc,item)=>{
+    return acc+item.finalBill;
+},0); //print
+
+//Find the customer who paid the highest final bill.
+const f = c.reduce((highest,item)=>{
+  return highest.finalBill>item.finalBill ? highest : item;
+}).customer; //print 
+
+//Extract all unique food item names and sort them alphabetically.
+const g = [...new Set(a.flatMap(ord=>ord.items.map(item=>item.name)).sort())];//print
+
+//Check whether any delivered order has a rating of 5.
+const h = a.some(ord=>ord.rating==5);//print
+
+const result = {
+  products : c,
+  totalRevenue: e,
+  highestSpendingCustomer: f,
+  uniqueItems: g,
+  hasFiveStarOrder: h
+};
+
+console.log(result);
