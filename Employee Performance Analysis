@@ -1,0 +1,58 @@
+//Employee Performance Analysis
+
+const employees = [
+    { id: 1, name: "Arun", department: "IT", score: 85, salary: 35000 },
+    { id: 2, name: "Priya", department: "HR", score: 65, salary: 28000 },
+    { id: 3, name: "Karthik", department: "IT", score: 95, salary: 45000 },
+    { id: 4, name: "Divya", department: "Finance", score: 45, salary: 32000 },
+    { id: 5, name: "Rahul", department: "HR", score: 75, salary: 30000 },
+    { id: 6, name: "Sneha", department: "IT", score: 55, salary: 40000 },
+    { id: 7, name: "Vikram", department: "Finance", score: 90, salary: 38000 }
+];
+
+/*
+Get all employees whose performance score is 70 or above.
+Find the first employee whose score is exactly 95.
+Create a new array containing only employee names.
+Check whether any employee has a score below 50.
+Check whether all employees earn a salary above ₹20,000.
+Calculate the total salary paid to all employees.
+Sort employees by performance score from highest to lowest.
+Find the employee with the highest performance score.
+*/
+
+//Get all employees whose performance score is 70 or above.
+const a = employees.filter(a=>a.score>=70);
+console.log(a);
+
+//Find the first employee whose score is exactly 95.
+const b = employees.find(a=>a.score==95);
+console.log(b);
+
+//Create a new array containing only employee names.
+const c = employees.map(a=>a.name);
+console.log(c);
+
+//Check whether any employee has a score below 50.
+const d = employees.some(a=>a.score<50);
+console.log(d);
+
+//Check whether all employees earn a salary above ₹20,000.
+const e = employees.every(a=>a.salary>20000);
+console.log(e);
+
+//Calculate the total salary paid to all employees.
+const f = employees.reduce((acc,sum)=>{
+    return acc+sum.salary;
+  },0);
+console.log(f);
+
+//Sort employees by performance score from highest to lowest.
+const g = employees.sort((x,y)=>y.score-x.score);
+console.log(g);
+
+//Find the employee with the highest performance score.
+const h = employees.reduce((high,sum)=>{
+  return high.score>sum.score ? high : sum;
+});
+console.log(h);
