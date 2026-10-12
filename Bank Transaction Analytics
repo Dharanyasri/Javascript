@@ -1,0 +1,167 @@
+const transactions = [
+    {
+        id: 1001,
+        customer: "Anu",
+        type: "credit",
+        amount: 25000,
+        status: "success",
+        category: "Salary"
+    },
+    {
+        id: 1002,
+        customer: "Bala",
+        type: "debit",
+        amount: 3000,
+        status: "success",
+        category: "Shopping"
+    },
+    {
+        id: 1003,
+        customer: "Anu",
+        type: "debit",
+        amount: 1500,
+        status: "success",
+        category: "Food"
+    },
+    {
+        id: 1004,
+        customer: "Charan",
+        type: "credit",
+        amount: 12000,
+        status: "failed",
+        category: "Salary"
+    },
+    {
+        id: 1005,
+        customer: "Divya",
+        type: "debit",
+        amount: 5000,
+        status: "success",
+        category: "Shopping"
+    },
+    {
+        id: 1006,
+        customer: "Bala",
+        type: "credit",
+        amount: 8000,
+        status: "success",
+        category: "Freelance"
+    },
+    {
+        id: 1007,
+        customer: "Anu",
+        type: "debit",
+        amount: 2000,
+        status: "failed",
+        category: "Travel"
+    },
+    {
+        id: 1008,
+        customer: "Divya",
+        type: "credit",
+        amount: 15000,
+        status: "success",
+        category: "Salary"
+    },
+    {
+        id: 1009,
+        customer: "Charan",
+        type: "debit",
+        amount: 2500,
+        status: "success",
+        category: "Food"
+    },
+    {
+        id: 1010,
+        customer: "Bala",
+        type: "debit",
+        amount: 1000,
+        status: "success",
+        category: "Food"
+    }
+];
+
+//Get all successful transactions.
+const a = transactions.filter(trs=>trs.status=="success");
+
+//Create a new array containing each successful transaction's customer, type, and amount.
+const b = a.map(trs=>{
+  return {
+    customer : trs.customer,
+    type : trs.type,
+    amount : trs.amount
+  }
+});
+
+//Find all successful debit transactions.
+const c = b.filter(prd=>prd.type=="debit");
+
+//Sort successful transactions from highest amount to lowest.
+const d = b.sort((x,y)=>y.amount-x.amount);
+
+//Calculate the total amount of successful credit transactions.
+const e = b.filter(prd=>prd.type=="credit").reduce((acc,item)=>{
+  return acc+item.amount;
+},0);
+
+//Calculate the total amount of successful debit transactions.
+const f = b.filter(prd=>prd.type=="debit").reduce((acc,item)=>{
+  return acc+item.amount;
+},0);
+
+
+//Find the customer who made the highest successful transaction.
+const g = b.reduce((acc,item)=>{
+  return acc.amount>item.amount ? acc : item;
+});
+
+//Extract all unique transaction categories and sort them alphabetically
+const h = [...new Set(transactions.flatMap(prd=>prd.category).sort())];
+
+//Check whether any transaction has failed.
+const i = transactions.some(trans=>trans.status=="failed");
+
+//Calculate the average amount of successful transactions.
+const j = a.reduce((acc,item)=>{
+  return acc+item.amount;
+},0);
+const avg = j/transactions.length;
+
+//Count the number of successful transactions for each customer.
+const k = [...new Set(a.flatMap(prd=>prd.customer))];
+const l = a.reduce((acc,item)=>{
+  if(!acc[item.customer]){
+    acc[item.customer]=0;
+  };
+  acc[item.customer]++;
+  return acc;
+},{});
+console.log(l);
+
+//Calculate each customer's total successful credit and debit amounts.
+const result = transactions
+    .filter(trs => trs.status === "success")
+    .reduce((acc, trs) => {
+        if (!acc[trs.customer]) {
+            acc[trs.customer] = {
+                totalCredit: 0,
+                totalDebit: 0
+            };
+        }
+
+        if (trs.type === "credit") {
+            acc[trs.customer].totalCredit += trs.amount;
+        } else if (trs.type === "debit") {
+            acc[trs.customer].totalDebit += trs.amount;
+        }
+
+        return acc;
+    }, {});
+
+console.log(result);
+
+//Find successful transactions greater than ₹5,000.
+const u = transactions.filter(
+    trs => trs.status === "success" && trs.amount > 5000
+);
+console.log(u);
