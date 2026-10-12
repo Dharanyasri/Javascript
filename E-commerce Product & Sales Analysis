@@ -1,0 +1,134 @@
+const products = [
+    {
+        id: 101,
+        name: "Laptop",
+        category: "Electronics",
+        price: 55000,
+        stock: 8,
+        sold: 12,
+        rating: 4.5,
+        tags: ["Computer", "Office", "Electronics"]
+    },
+    {
+        id: 102,
+        name: "Headphones",
+        category: "Electronics",
+        price: 2500,
+        stock: 20,
+        sold: 35,
+        rating: 4.2,
+        tags: ["Audio", "Music"]
+    },
+    {
+        id: 103,
+        name: "Office Chair",
+        category: "Furniture",
+        price: 7000,
+        stock: 5,
+        sold: 10,
+        rating: 4.0,
+        tags: ["Office", "Furniture"]
+    },
+    {
+        id: 104,
+        name: "Smartphone",
+        category: "Electronics",
+        price: 30000,
+        stock: 0,
+        sold: 25,
+        rating: 4.8,
+        tags: ["Mobile", "Electronics", "Gadgets"]
+    },
+    {
+        id: 105,
+        name: "Desk",
+        category: "Furniture",
+        price: 9000,
+        stock: 12,
+        sold: 7,
+        rating: 3.8,
+        tags: ["Office", "Furniture"]
+    },
+    {
+        id: 106,
+        name: "Smartwatch",
+        category: "Electronics",
+        price: 8000,
+        stock: 15,
+        sold: 18,
+        rating: 4.6,
+        tags: ["Wearable", "Gadgets"]
+    }
+];
+
+//Get all products belonging to the Electronics category.
+const a = products.filter(prd=>prd.category=="Electronics");
+
+//Create a new array containing each product's name, price, and total sales value (price × sold).
+const b = a.map(prd=>{
+  const total = prd.price*prd.sold;
+  return {
+    name : prd.name,
+    price : prd.price,
+    totalSales : total
+  }
+});
+
+//Find products whose rating is greater than or equal to 4.5.
+const c = a.filter(prd=>prd.rating>=4.5);
+
+//Sort all products by the number sold, from highest to lowest.
+const d = a.sort((x,y)=>y.sold-x.sold);
+
+//Calculate the total sales revenue across all products.
+const e = products.reduce((acc,item)=>{
+  return acc+item.price*item.sold;
+},0)
+
+//Find the product with the highest number of units sold.
+const f = products.reduce((highest,item)=>{
+  return highest.sold>item.sold ? highest : item ;
+}).name;
+
+//Extract all unique tags and sort them alphabetically.
+const g = [...new Set(products.flatMap(prd=>prd.tags).sort())];
+
+//Check whether any product is out of stock.
+const h = products.some(prd=>prd.stock==0);
+
+
+//Calculate the average product rating.
+const i = products.reduce((acc,item)=>{
+    return acc+item.rating;
+  },0);
+const totalavg = i/products.length;
+
+//Group the products by category and count how many products belong to each category.
+const j = products.reduce((acc,item)=>{
+  if(!acc[item.category]){
+    acc[item.category]=0;
+  }
+  acc[item.category]++;
+  return acc;
+},{});
+
+//Find products with stock below 10.
+const k = products.filter(prd=>prd.stock<10);
+
+//Calculate the total number of units sold across all products.
+const l = products.reduce((acc,item)=>{
+  return acc+item.sold;
+},0);
+
+const result = {
+  products : b,
+  totalSalesRevenue: e,
+  bestSellingProduct: f,
+  uniqueTags: g,
+  hasOutOfStockProduct: h,
+  averageRating: totalavg,
+  productsByCategory:  j,
+  lowStockProducts: k,
+  totalUnitsSold: l
+};
+console.log(result);
