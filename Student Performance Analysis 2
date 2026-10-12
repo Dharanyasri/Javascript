@@ -1,0 +1,167 @@
+//Student Performance Analysis
+/* 
+1. Get all students from the IT department.
+2. Create a new array with each student's name, total marks, and average marks.
+3. Find students whose average marks are at least 80.
+4. Sort all students by average marks from highest to lowest.
+5. Calculate the total marks scored by all students across all subjects.
+6. Find the student with the highest average marks.
+7. Extract all unique skills and sort them alphabetically.
+8. Check whether any student has attendance below 70%.
+9. Calculate the overall average of all individual subject marks.
+10. Count how many students belong to each department.
+11. Find students who scored above 80 in every subject.
+12. Calculate the average attendance percentage.
+13. Count how many students have at least one mark below 60.
+14. Create a summary for each student showing whether they passed or failed, using an average mark of 50 or above as the passing condition.
+*/
+
+const students = [
+    {
+        id: 1,
+        name: "Anu",
+        department: "IT",
+        marks: [85, 90, 78],
+        attendance: 92,
+        skills: ["JavaScript", "React"]
+    },
+    {
+        id: 2,
+        name: "Bala",
+        department: "CSE",
+        marks: [65, 70, 72],
+        attendance: 75,
+        skills: ["Python", "SQL"]
+    },
+    {
+        id: 3,
+        name: "Charan",
+        department: "IT",
+        marks: [95, 88, 92],
+        attendance: 96,
+        skills: ["JavaScript", "Python", "Node.js"]
+    },
+    {
+        id: 4,
+        name: "Divya",
+        department: "ECE",
+        marks: [55, 60, 58],
+        attendance: 68,
+        skills: ["C", "Python"]
+    },
+    {
+        id: 5,
+        name: "Ezhil",
+        department: "CSE",
+        marks: [80, 85, 82],
+        attendance: 88,
+        skills: ["Java", "SQL", "React"]
+    },
+    {
+        id: 6,
+        name: "Farah",
+        department: "IT",
+        marks: [72, 68, 75],
+        attendance: 82,
+        skills: ["JavaScript", "HTML", "CSS"]
+    }
+];
+
+
+
+
+// 1. Get all students from the IT department.
+const a = students.filter(std => std.department === "IT");
+
+// 2. Create a new array with name, total marks, and average marks.
+const b = students.map(std => {
+    const totalMarks = std.marks.reduce((acc, mark) => acc + mark, 0);
+    const averageMarks = totalMarks / std.marks.length;
+
+    return {
+        name: std.name,
+        totalMarks,
+        averageMarks: Number(averageMarks.toFixed(2))
+    };
+});
+
+// 3. Find students whose average marks are at least 80.
+const c = b.filter(std => std.averageMarks >= 80);
+
+// 4. Sort all students by average marks, highest to lowest.
+const d = [...b].sort((x, y) => y.averageMarks - x.averageMarks);
+
+// 5. Calculate total marks across all students and subjects.
+const e = students.reduce((acc, std) => {
+    return acc + std.marks.reduce((sum, mark) => sum + mark, 0);
+}, 0);
+
+// 6. Find the student with the highest average marks.
+const f = d[0];
+
+// 7. Extract all unique skills and sort alphabetically.
+const g = [...new Set(
+    students.flatMap(std => std.skills)
+)].sort();
+
+// 8. Check whether any student has attendance below 70%.
+const h = students.some(std => std.attendance < 70);
+
+// 9. Calculate the overall average of all individual subject marks.
+const totalSubjects = students.reduce((acc, std) => {
+    return acc + std.marks.length;
+}, 0);
+
+const i = e / totalSubjects;
+
+// 10. Count how many students belong to each department.
+const j = students.reduce((acc, std) => {
+    if (!acc[std.department]) {
+        acc[std.department] = 0;
+    }
+
+    acc[std.department]++;
+    return acc;
+}, {});
+
+// 11. Find students who scored above 80 in every subject.
+const k = students.filter(std =>
+    std.marks.every(mark => mark > 80)
+);
+
+// 12. Calculate average attendance percentage.
+const l = students.reduce((acc, std) => {
+    return acc + std.attendance;
+}, 0) / students.length;
+
+// 13. Count students who have at least one mark below 60.
+const m = students.filter(std =>
+    std.marks.some(mark => mark < 60)
+).length;
+
+// 14. Create a pass/fail summary using average marks >= 50.
+const n = b.map(std => ({
+    name: std.name,
+    averageMarks: std.averageMarks,
+    result: std.averageMarks >= 50 ? "Pass" : "Fail"
+}));
+
+// Combine all results.
+const result = {
+    itStudents: a,
+    studentMarks: b,
+    studentsWithAverageAtLeast80: c,
+    sortedByAverage: d,
+    totalMarksAcrossAllStudents: e,
+    highestAverageStudent: f,
+    uniqueSkills: g,
+    hasAttendanceBelow70: h,
+    overallSubjectAverage: Number(i.toFixed(2)),
+    studentsByDepartment: j,
+    studentsAbove80InEverySubject: k,
+    averageAttendance: Number(l.toFixed(2)),
+    studentsWithMarkBelow60: m,
+    passFailSummary: n
+};
+
+console.log(result);
