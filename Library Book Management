@@ -1,0 +1,131 @@
+//Library Book Management
+
+const books = [
+    {
+        id: 1,
+        title: "JavaScript Basics",
+        author: "John",
+        category: "Programming",
+        price: 500,
+        ratings: [4, 5, 5],
+        available: true,
+        borrowedCount: 12
+    },
+    {
+        id: 2,
+        title: "Python Guide",
+        author: "Alice",
+        category: "Programming",
+        price: 650,
+        ratings: [5, 4, 4],
+        available: false,
+        borrowedCount: 20
+    },
+    {
+        id: 3,
+        title: "Atomic Habits",
+        author: "James",
+        category: "Self-help",
+        price: 400,
+        ratings: [5, 5, 4],
+        available: true,
+        borrowedCount: 30
+    },
+    {
+        id: 4,
+        title: "Rich Dad Poor Dad",
+        author: "Robert",
+        category: "Finance",
+        price: 350,
+        ratings: [3, 4, 4],
+        available: true,
+        borrowedCount: 18
+    },
+    {
+        id: 5,
+        title: "React Mastery",
+        author: "John",
+        category: "Programming",
+        price: 800,
+        ratings: [5, 5, 5],
+        available: false,
+        borrowedCount: 25
+    },
+    {
+        id: 6,
+        title: "Deep Work",
+        author: "Cal",
+        category: "Self-help",
+        price: 450,
+        ratings: [4, 4, 5],
+        available: true,
+        borrowedCount: 15
+    }
+];
+
+//Get all books where available is true.
+const a = books.filter(bk=>bk.available==true);
+console.log(a);
+
+//Find the book titled "React Mastery".
+const b = books.find(bk=>bk.title=="React Mastery");
+console.log(b);
+
+//Create an array containing only the book titles.
+const c = books.map(bk=>bk.title);
+console.log(c);
+
+//Check whether any book costs more than ₹700.
+const d = books.find(bk=>bk.price>700);
+console.log(d);
+
+//Check whether all books cost more than ₹300.
+const e = books.every(bk=>bk.price>300);
+console.log(e);
+
+//Calculate the total price of all six books.
+const f = books.reduce((acc,sum)=>{
+  return acc+sum.price;
+},0);
+console.log(f);
+
+//Create a new array containing each book's title and average rating.
+const g = books.map(book => {
+    const total = book.ratings.reduce((sum, rating) => {
+        return sum + rating;
+    }, 0);
+
+    const average = total / book.ratings.length;
+
+    return {
+        title: book.title,
+        averageRating: average
+    };
+});
+
+console.log(g);
+
+//Get books whose average rating is at least 4.5.
+const h = g.filter(bk=>bk.averageRating>=4.5);
+console.log(h);
+
+//Find the book with the highest borrowedCount.
+const i = books.reduce((high,item)=>{
+  return high.borrowedCount>item.borrowedCount ? high : item;
+});
+console.log(i);
+
+//Sort books from cheapest to most expensive without modifying the original array.
+const j = books.sort((x,y)=>x.price-y.price);
+console.log(j);
+
+//Create an alphabetically sorted array of unique author names.
+const k = [...new Set(books.flatMap(bk=>bk.author).sort())];
+console.log(k);
+
+//Calculate the total number of individual ratings across all books.
+const l = books.reduce((acc, book) => {
+    return acc + book.ratings.length;
+}, 0);
+
+console.log(l); 
