@@ -1,0 +1,62 @@
+//Food Delivery Analytics
+
+const orders = [
+    { id: 101, customer: "Anu", restaurant: "Pizza Hub", amount: 850, items: 2, status: "Delivered", rating: 5 },
+    { id: 102, customer: "Bala", restaurant: "Burger Point", amount: 450, items: 3, status: "Cancelled", rating: 0 },
+    { id: 103, customer: "Charan", restaurant: "Pizza Hub", amount: 1200, items: 4, status: "Delivered", rating: 4 },
+    { id: 104, customer: "Divya", restaurant: "Food Court", amount: 300, items: 1, status: "Pending", rating: 0 },
+    { id: 105, customer: "Ezhil", restaurant: "Burger Point", amount: 650, items: 2, status: "Delivered", rating: 3 },
+    { id: 106, customer: "Farah", restaurant: "Food Court", amount: 950, items: 5, status: "Delivered", rating: 5 },
+    { id: 107, customer: "Gokul", restaurant: "Pizza Hub", amount: 700, items: 2, status: "Cancelled", rating: 0 },
+    { id: 108, customer: "Hari", restaurant: "Burger Point", amount: 1100, items: 4, status: "Delivered", rating: 4 }
+];
+
+//Get all orders whose status is "Delivered".
+const a = orders.filter(ord=>ord.status=="Delivered");
+console.log(a);
+
+//Find the order with ID 106.
+const b = orders.filter(ord=>ord.id==106);
+console.log(b);
+
+//Create an array containing only customer names.
+const c = orders.map(ord=>ord.customer);
+console.log(c);
+
+//Check whether any order amount is above ₹1,000.
+const d = orders.some(ord=>ord.amount>1000);
+console.log(d);
+
+//Check whether every order contains at least one item.
+const e = orders.every(ord=>ord.items>=1);
+console.log(e);
+
+//Calculate how many orders were delivered.
+const f=a.length;
+console.log(f);
+
+//Calculate the total amount from delivered orders only.
+const g=a.reduce((acc,sum)=>{
+  return acc+sum.amount;
+},0);
+console.log(g);
+
+//Calculate the average amount of delivered orders.
+const h=g/a.length;
+console.log(h);
+
+//Sort all orders from highest amount to lowest without changing the original array.
+const i=orders.sort((x,y)=>y.amount-x.amount);
+console.log(i);
+
+//Find the first order with a rating of 5.
+const j=orders.find(ord=>ord.rating==5);
+console.log(j);
+
+//Create an array of unique restaurant names.
+const k = [...new Set(orders.flatMap(ord=>ord.restaurant).sort())];
+console.log(k);
+
+//Find all delivered orders with an amount above ₹800.
+const l=a.filter(ord=>ord.amount>800);
+console.log(l);
