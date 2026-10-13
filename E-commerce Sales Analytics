@@ -1,0 +1,136 @@
+//E-commerce Sales Analytics
+
+
+const sales = [
+    {
+        id: 1,
+        salesperson: "Anu",
+        region: "South",
+        products: [
+            { name: "Laptop", price: 50000, quantity: 1 },
+            { name: "Mouse", price: 500, quantity: 2 }
+        ],
+        status: "Completed"
+    },
+    {
+        id: 2,
+        salesperson: "Bala",
+        region: "North",
+        products: [
+            { name: "Phone", price: 20000, quantity: 2 },
+            { name: "Headphones", price: 2000, quantity: 1 }
+        ],
+        status: "Pending"
+    },
+    {
+        id: 3,
+        salesperson: "Charan",
+        region: "South",
+        products: [
+            { name: "Laptop", price: 50000, quantity: 2 },
+            { name: "Keyboard", price: 1500, quantity: 1 }
+        ],
+        status: "Completed"
+    },
+    {
+        id: 4,
+        salesperson: "Divya",
+        region: "East",
+        products: [
+            { name: "Tablet", price: 15000, quantity: 1 },
+            { name: "Mouse", price: 500, quantity: 3 }
+        ],
+        status: "Cancelled"
+    },
+    {
+        id: 5,
+        salesperson: "Ezhil",
+        region: "North",
+        products: [
+            { name: "Phone", price: 20000, quantity: 1 },
+            { name: "Laptop", price: 50000, quantity: 1 }
+        ],
+        status: "Completed"
+    }
+];
+
+// 1. Get all completed sales
+const a = sales.filter(sale => sale.status === "Completed");
+console.log("1. Completed sales:", a);
+
+// 2. Find the sale made by Charan
+const b = sales.find(sale => sale.salesperson === "Charan");
+console.log("2. Charan's sale:", b);
+
+// 3. Create an array of salesperson names
+const c = sales.map(sale => sale.salesperson);
+console.log("3. Salesperson names:", c);
+
+// 4. Get unique regions in alphabetical order
+const d = [...new Set(sales.map(sale => sale.region))].sort();
+console.log("4. Unique regions:", d);
+
+// 5. Calculate total product quantity per salesperson
+const e = sales.map(sale => {
+    const totalQuantity = sale.products.reduce((acc, product) => {
+        return acc + product.quantity;
+    }, 0);
+
+    return {
+        salesperson: sale.salesperson,
+        totalQuantity
+    };
+});
+console.log("5. Total quantity per salesperson:", e);
+
+// 6. Calculate total sale value per salesperson
+const f = sales.map(sale => {
+    const totalValue = sale.products.reduce((acc, product) => {
+        return acc + product.price * product.quantity;
+    }, 0);
+
+    return {
+        salesperson: sale.salesperson,
+        totalValue
+    };
+});
+console.log("6. Total value per salesperson:", f);
+
+// 7. Calculate revenue from completed sales only
+const g = sales
+    .filter(sale => sale.status === "Completed")
+    .reduce((acc, sale) => {
+        const saleTotal = sale.products.reduce((sum, product) => {
+            return sum + product.price * product.quantity;
+        }, 0);
+
+        return acc + saleTotal;
+    }, 0);
+console.log("7. Completed sales revenue:", g);
+
+// 8. Calculate total laptops sold across all sales
+const h = sales.reduce((acc, sale) => {
+    const laptopQuantity = sale.products
+        .filter(product => product.name === "Laptop")
+        .reduce((sum, product) => sum + product.quantity, 0);
+
+    return acc + laptopQuantity;
+}, 0);
+console.log("8. Total laptops sold:", h);
+
+// 9. Get sales whose total value exceeds ₹40,000
+const i = sales.filter(sale => {
+    const totalValue = sale.products.reduce((acc, product) => {
+        return acc + product.price * product.quantity;
+    }, 0);
+
+    return totalValue > 40000;
+});
+console.log("9. Sales above ₹40,000:", i);
+
+// 10. Create a flat array of all product names
+const j = sales.flatMap(sale =>
+    sale.products.map(product => product.name)
+);
+console.log("10. All product names:", j);
++
