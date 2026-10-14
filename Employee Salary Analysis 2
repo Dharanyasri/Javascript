@@ -1,0 +1,17 @@
+//Employee Salary Analysis
+
+const employees = [
+  { name: "Arun", dept: "IT", salary: 60000 },
+  { name: "Priya", dept: "HR", salary: 45000 },
+  { name: "Kavin", dept: "IT", salary: 75000 },
+  { name: "Divya", dept: "Sales", salary: 55000 },
+  { name: "Ravi", dept: "IT", salary: 40000 },
+  { name: "Meena", dept: "HR", salary: 65000 }
+];
+//Use method chaining to calculate the total salary of IT employees earning more than ₹50,000.
+//output : 135000
+
+const a = employees.filter(emp=>emp.dept=="IT" && emp.salary>50000).reduce((acc,sum)=>{
+  return acc+sum.salary;
+},0);
+console.log(a);
