@@ -1,0 +1,29 @@
+//Separate passed and failed students
+//Use reduce() to group student names based on their marks.
+const students = [
+  { name: "Anu", mark: 75 },
+  { name: "Bala", mark: 32 },
+  { name: "Cathy", mark: 40 },
+  { name: "Deepak", mark: 28 },
+  { name: "Esha", mark: 90 }
+];
+
+/* output 
+{
+  passed: ["Anu", "Cathy", "Esha"],
+  failed: ["Bala", "Deepak"]
+} */
+const a = students.reduce((acc,sum)=>{
+  if(sum.mark>=40){
+    acc.passed.push(sum.name);
+  }
+  else{
+    acc.failed.push(sum.name);
+  }
+  return acc;
+},
+{
+    passed : [],
+    failed : []
+});
+console.log(a);
