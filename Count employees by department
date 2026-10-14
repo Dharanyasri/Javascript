@@ -1,0 +1,19 @@
+//Count employees by department
+/*Use reduce() to count how many employees belong to each department.*/
+const employees = [
+  { name: "Asha", dept: "IT" },
+  { name: "Bala", dept: "HR" },
+  { name: "Charan", dept: "IT" },
+  { name: "Divya", dept: "Sales" },
+  { name: "Ezhil", dept: "HR" },
+  { name: "Farah", dept: "IT" }
+];
+
+const a = employees.reduce((acc,sum)=>{
+  if(!acc[sum.dept]){
+    acc[sum.dept]=0;
+  }
+  acc[sum.dept]++;
+  return acc;
+},{});
+console.log(a);
