@@ -1,0 +1,25 @@
+//Total spending per customer
+/*Given this array, use reduce() to calculate the total amount spent by each customer.*/
+const orders = [
+  { customer: "Arun", amount: 500 },
+  { customer: "Priya", amount: 800 },
+  { customer: "Arun", amount: 300 },
+  { customer: "Priya", amount: 200 },
+  { customer: "Kavi", amount: 600 }
+];
+
+/* output :
+{
+  Arun: 800,
+  Priya: 1000,
+  Kavi: 600
+} */
+
+const a = orders.reduce((acc,sum)=>{
+  if(!acc[sum.customer]){
+    acc[sum.customer]=0;
+  }
+  acc[sum.customer]+=sum.amount;
+  return acc;
+},{});
+console.log(a);
