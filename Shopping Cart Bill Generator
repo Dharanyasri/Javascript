@@ -1,0 +1,32 @@
+//Shopping Cart Bill Generator
+const cart = [
+  { product: "Laptop", price: 50000, quantity: 1 },
+  { product: "Mouse", price: 500, quantity: 2 },
+  { product: "Keyboard", price: 1500, quantity: 1 },
+  { product: "Headphones", price: 2000, quantity: 2 },
+  { product: "USB Cable", price: 300, quantity: 3 }
+];
+
+/*
+Use map() to calculate each product's subtotal (price × quantity).
+Use filter() to keep only products whose subtotal is at least ₹1,000.
+Use reduce() to calculate the total of those filtered subtotals.
+If the total is ₹55,000 or more, apply a 10% discount. Otherwise, no discount.
+Print the subtotal, discount amount, and final amount.
+*/
+
+const a = cart.map(c=>c.price*c.quantity);
+
+const b = a.filter(c=>c>=1000);
+
+const c = b.reduce((acc,sum)=>acc+sum,0);
+
+
+const d = c>=55000 ? c*0.9 : c;
+
+
+const result = {
+    subtotal : c,
+    discount : d
+}
+console.log(result);
