@@ -1,0 +1,19 @@
+//E-commerce Order Management
+const orders = [
+  { id: 101, customer: "Arun", product: "Laptop", amount: 55000, status: "delivered" },
+  { id: 102, customer: "Priya", product: "Mouse", amount: 800, status: "pending" },
+  { id: 103, customer: "Kavin", product: "Keyboard", amount: 2500, status: "delivered" },
+  { id: 104, customer: "Divya", product: "Monitor", amount: 12000, status: "delivered" },
+  { id: 105, customer: "Ravi", product: "Headphones", amount: 1800, status: "cancelled" },
+  { id: 106, customer: "Meena", product: "Phone", amount: 30000, status: "delivered" }
+];
+
+/* 
+Select only orders with status === "delivered".
+Keep only orders where amount > 5000.
+Sort the remaining orders by amount from highest to lowest.
+Return only the customer names.
+*/
+const a = orders.filter(ord=>ord.status=="delivered" && ord.amount>5000).map(ord=>ord.customer);
+a.sort((x,y)=>y.amount-x.amount);
+console.log(a);
